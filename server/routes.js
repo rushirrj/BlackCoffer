@@ -6,7 +6,30 @@ const jsonData = require("./jsondata.json");
 router.get("/data/", async (req, res) => {
   try {
     const data = await Data.find();
-    return res.status(200).json({ data, message: "Data fetched successfully" });
+    return res
+      .status(200)
+      .json({ data: data, message: "Data fetched successfully" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+router.get("/data/:type", async (req, res) => {
+  try {
+    // const data = await Data.find();
+    const type = req.params.type;
+    const data = await Data.count({ region: "Western Africa" });
+    Data.aggregate([
+      {
+        $group: {
+          _id: `$${type}`,
+          count: { $sum: 1 },
+        },
+      },
+    ]).then((result) => {
+      return res
+        .status(200)
+        .json({ data: result, message: "Data fetched successfully" });
+    });
   } catch (err) {
     console.log(err);
   }
@@ -19,9 +42,7 @@ router.get("/data/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-})
-
-
+});
 
 // router.get("/generate", async (req, res) => {
 //   try {
