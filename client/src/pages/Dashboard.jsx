@@ -34,8 +34,8 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <div className="flex flex-row" >
-        <IntensityChart style={{width:"500px"}}/>
+      <div className="flex flex-row" style={{width:"500px"}}>
+        <IntensityChart />
       </div>
     </div>
   )
