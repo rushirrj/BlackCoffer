@@ -32,12 +32,11 @@ const IntensityChart = () => {
     labels: Object.keys(data),
     datasets: [
         {
-            label: 'Published',
+            label: 'intensity count',
             data: Object.values(data),
-            backgroundColor: "#404040",
-            borderWidth: 0,
+            backgroundColor: 'rgba(0,7,61, 0.8)',
+            borderWidth: 1,
             barThickness: 10,
-            borderRadius: 5
         }
     ]
   };
@@ -46,7 +45,11 @@ const IntensityChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
+        position: 'top' ,
+        // display: false,
+      }, title: {
+        display: true,
+        text: 'Intensity Bar Chart',
       },
     },
     scales: {

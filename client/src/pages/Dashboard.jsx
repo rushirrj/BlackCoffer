@@ -34,7 +34,9 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <IntensityChart />
+      <div className="flex flex-row" >
+        <IntensityChart style={{width:"500px"}}/>
+      </div>
     </div>
   )
 };
