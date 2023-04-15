@@ -39,6 +39,7 @@ const FilterData = ({ data, setData }) => {
     });
     console.log(filteredData.length);
     setData(filteredData);
+    if(filteredData.length == 0 && data.length != 0) setData(ogData)
   };
 
   return (

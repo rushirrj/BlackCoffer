@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReportCard from "../components/Cards/ReportCard";
 import ReactPaginate from "react-paginate";
 import FilterData from "../components/FilterData";
+import CircularProgress from "@mui/material/CircularProgress";
 const Reports = ({ itemsPerPage }) => {
   const [data, setData] = useState([]);
   const getData = () =>
@@ -29,7 +30,13 @@ const Reports = ({ itemsPerPage }) => {
       <hr />
       <FilterData data={data} setData={setData} />
       <hr />
-      <ListFeeds data={currentItems} />
+      {data.length === 0 ? (
+        <div className="flex justify-center h-full items-center">
+          <CircularProgress />
+        </div>
+      ) : (
+        <ListFeeds data={currentItems} />
+      )}
       <div className="flex justify-around py-5">
         <ReactPaginate
           breakLabel="..."
