@@ -1,0 +1,11 @@
+[
+    {"label":"Industries","value":{"pestle":"Industries"}},
+    {"label":"Environmental","value":{"pestle":"Environmental"}},
+    {"label":"Economic","value":{"pestle":"Economic"}},
+    {"label":"Political","value":{"pestle":"Political"}},
+    {"label":"Technological","value":{"pestle":"Technological"}},
+    {"label":"Organization","value":{"pestle":"Organization"}},
+    {"label":"Healthcare","value":{"pestle":"Healthcare"}},
+    {"label":"Social","value":{"pestle":"Social"}},
+    {"label":"Lifestyles","value":{"pestle":"Lifestyles"}}
+]

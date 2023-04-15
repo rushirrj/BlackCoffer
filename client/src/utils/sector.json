@@ -1,0 +1,20 @@
+[
+    {"label":"Energy","value":{"sector":"Energy"}},
+    {"label":"Environment","value":{"sector":"Environment"}},
+    {"label":"Government","value":{"sector":"Government"}},
+    {"label":"Aerospace & defence","value":{"sector":"Aerospace & defence"}},
+    {"label":"Manufacturing","value":{"sector":"Manufacturing"}},
+    {"label":"Retail","value":{"sector":"Retail"}},
+    {"label":"Financial services","value":{"sector":"Financial services"}},
+    {"label":"Support services","value":{"sector":"Support services"}},
+    {"label":"Information Technology","value":{"sector":"Information Technology"}},
+    {"label":"Healthcare","value":{"sector":"Healthcare"}},
+    {"label":"Food & agriculture","value":{"sector":"Food & agriculture"}},
+    {"label":"Automotive","value":{"sector":"Automotive"}},
+    {"label":"Tourism & hospitality","value":{"sector":"Tourism & hospitality"}},
+    {"label":"Construction","value":{"sector":"Construction"}},
+    {"label":"Security","value":{"sector":"Security"}},
+    {"label":"Transport","value":{"sector":"Transport"}},
+    {"label":"Water","value":{"sector":"Water"}},
+    {"label":"Media & entertainment","value":{"sector":"Media & entertainment"}}
+]

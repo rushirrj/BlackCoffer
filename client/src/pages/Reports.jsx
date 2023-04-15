@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReportCard from "../components/Cards/ReportCard";
 import ReactPaginate from "react-paginate";
+import FilterData from "../components/FilterData";
 const Reports = ({ itemsPerPage }) => {
   const [data, setData] = useState([]);
   const getData = () =>
@@ -13,7 +14,6 @@ const Reports = ({ itemsPerPage }) => {
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = data.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(data.length / itemsPerPage);
   const handlePageClick = (event) => {
@@ -25,22 +25,23 @@ const Reports = ({ itemsPerPage }) => {
     <div>
       <div className="text-center">
         <h1 className="font-bold text-2xl py-2">REPORTS</h1>
-        <hr />
       </div>
+      <hr />
+      <FilterData data={data} setData={setData} />
+      <hr />
       <ListFeeds data={currentItems} />
       <div className="flex justify-around py-5">
-
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-        className="w-1/2 flex justify-around items-center"
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          className="w-1/2 flex justify-around items-center"
         />
-        </div>
+      </div>
     </div>
   );
 };
@@ -48,8 +49,8 @@ const Reports = ({ itemsPerPage }) => {
 const ListFeeds = ({ data }) => {
   return (
     <div className="grid grid-cols-3 gap-3 p-3">
-      {data.map((item) => (
-        <ReportCard content={item} />
+      {data.map((item, key) => (
+        <ReportCard content={item} key={key} />
       ))}
     </div>
   );
