@@ -60,6 +60,21 @@ router.get("/dashboard/intensity", async (req, res) => {
   });
   return res.status(200).json({ data: mapData, message: "Data fetched" });
 });
+router.get("/dashboard/likelihood", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  mapData[0] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.likelihood]) {
+      mapData[item.likelihood] += 1;
+    } else if (item.likelihood === null) {
+      mapData[0] += 1;
+    } else {
+      mapData[item.likelihood] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
 
 // router.get("/generate", async (req, res) => {
 //   try {
