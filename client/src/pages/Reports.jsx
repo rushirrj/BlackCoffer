@@ -5,7 +5,7 @@ const Reports = () => {
   const getData = () =>
     fetch("http://localhost:4000/api/data/")
       .then((res) => res.json())
-      .then((data) => setData(data?.data));
+      .then((data) => setData(data?.data.splice(0,200)));
   React.useEffect(() => {
     getData();
   }, []);
