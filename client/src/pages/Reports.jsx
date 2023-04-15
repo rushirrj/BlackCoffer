@@ -24,9 +24,12 @@ const Reports = ({ itemsPerPage }) => {
   return (
     <div>
       <div className="text-center">
-        <h1 className="font-bold text-2xl py-2">Reports</h1>
+        <h1 className="font-bold text-2xl py-2">REPORTS</h1>
+        <hr />
       </div>
       <ListFeeds data={currentItems} />
+      <div className="flex justify-around py-5">
+
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -35,14 +38,16 @@ const Reports = ({ itemsPerPage }) => {
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
-      />
+        className="w-1/2 flex justify-around items-center"
+        />
+        </div>
     </div>
   );
 };
 
 const ListFeeds = ({ data }) => {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-3 p-3">
       {data.map((item) => (
         <ReportCard content={item} />
       ))}
