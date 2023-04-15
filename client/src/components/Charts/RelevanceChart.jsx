@@ -62,7 +62,8 @@ const RelevanceChart = () => {
   };
 
   return (
-    <div style={{ width: "500px" }}>
+    // <div style={{ width: "500px" }}>
+    <div className="flex justify-center" style={{ width: "100%",height:"100%" }}>
       {data == {} || Object.keys(data).length === 0 ? (
         <div className="flex justify-center">
           <CircularProgress />

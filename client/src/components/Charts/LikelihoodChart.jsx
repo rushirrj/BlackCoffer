@@ -60,7 +60,8 @@ const LikelihoodChart = () => {
   };
 
   return (
-    <div style={{ width: "250px", height: "250px" }}>
+    // <div style={{ width: "250px", height: "250px" }}>
+    <div className="flex justify-center" style={{ width: "100%",height:"300px" }}>
       {data == {} || Object.keys(data).length === 0 ? (
         <div className="flex justify-center">
           <CircularProgress />

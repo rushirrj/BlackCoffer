@@ -12,24 +12,24 @@ const Dashboard = () => {
   return (
     <div>
       <h1 className="font-bold text-center text-xl py-3">Dashboard</h1>
-      <div className="flex flex-col gap-2 flex-wrap">
-        <div className="flex flex-row justify-around flex-wrap gap-2">
-          <div className="shadow-md p-2"><IntensityChart /></div>
-          <div className="shadow-md p-2"><TopicChart /></div>
-          
-        </div>
-        <div className="flex flex-row justify-around flex-wrap">
+      <div className=" flex-wrap grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* <div className="flex flex-row flex-wrap gap-2"> */}
+          <div className="shadow-md p-2 "><IntensityChart /></div>
+          <div className="shadow-md p-2 "><TopicChart /></div>
+        {/* </div> */}
+        {/* <div className="flex flex-row  flex-wrap"> */}
           <div className=" shadow-md p-2 "><LikelihoodChart /></div>
+          <div className="shadow-md p-2 "><RelevanceChart /></div>
           <div className=" shadow-md p-2 "><CountryChart /></div>
-        </div>
-        <div className="flex flex-row justify-around flex-wrap">
-          <div className="shadow-md p-2"><YearChart /></div>
-          <div className="shadow-md p-2"><EndYearChart /></div>
-        </div>
-        <div className="flex flex-row justify-around flex-wrap">
-          <div className="shadow-md p-2"><RegionChart /></div>
-          <div className="shadow-md p-2"><RelevanceChart /></div>
-        </div>
+        {/* </div> */}
+        {/* <div className="flex flex-row  flex-wrap"> */}
+          <div className="shadow-md p-2 "><YearChart /></div>
+          <div className="shadow-md p-2 "><EndYearChart /></div>
+        {/* </div> */}
+        {/* <div className="flex flex-row flex-wrap"> */}
+          <div className="shadow-md p-2 "><RegionChart /></div>
+          
+        {/* </div> */}
       </div>
     </div>
   );

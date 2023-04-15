@@ -22,7 +22,7 @@ const TopicChart = () => {
     labels: Object.keys(data),
     datasets: [
       {
-        label: "Count Of Intensity",
+        label: "Count Of news",
         data: Object.values(data),
         backgroundColor: "rgba(0,7,61, 0.8)",
         borderWidth: 1,
@@ -33,7 +33,7 @@ const TopicChart = () => {
 
   const options = {
     indexAxis:"y",
-    responsive: true,
+    // responsive: true,
     plugins: {
       legend: {
         position: "top",
@@ -60,9 +60,10 @@ const TopicChart = () => {
   };
 
   return (
-    <div style={{ width: "500px" }}>
+    // <div style={{ width: "500px" }}>
+    <div className="flex justify-center" style={{ width: "100%",height:"100%" }}>
       {data == {} || Object.keys(data).length === 0 ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center h-full items-center">
           <CircularProgress />
         </div>
       ) : (
