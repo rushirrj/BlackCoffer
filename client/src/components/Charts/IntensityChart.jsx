@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Chart, PointElement, LineElement, LinearScale } from "chart.js/auto";
 
-import { Chart, PointElement, LineElement, LinearScale} from 'chart.js/auto';
 const IntensityChart = () => {
   const [data, setData] = useState({});
-  useEffect( () => {
+  useEffect(() => {
     intensityFunc();
   }, []);
 
   const intensityFunc = async () => {
-    fetch("http://localhost:4000/api/data")
+    fetch("http://localhost:4000/api/dashboard/intensity")
       .then((res) => res.json())
       .then((data) => {
-        let mapData = {};
-        mapData[0] = 0;
-        data?.data?.forEach((item) => {
-          if (mapData[item.intensity]) {
-            mapData[item.intensity] += 1;
-          } else if (item.intensity === null) {
-            mapData[0] += 1;
-          } else {
-            mapData[item.intensity] = 1;
-          }
-        });
-        setData(mapData);
+        setData(data?.data);
       })
       .catch((err) => console.log(err));
   };
@@ -31,26 +21,27 @@ const IntensityChart = () => {
   const charData = {
     labels: Object.keys(data),
     datasets: [
-        {
-            label: 'intensity count',
-            data: Object.values(data),
-            backgroundColor: 'rgba(0,7,61, 0.8)',
-            borderWidth: 1,
-            barThickness: 10,
-        }
-    ]
+      {
+        label: "Count Of Intensity",
+        data: Object.values(data),
+        backgroundColor: "rgba(0,7,61, 0.8)",
+        borderWidth: 1,
+        barThickness: 10,
+      },
+    ],
   };
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' ,
+        position: "top",
         // display: false,
-      }, title: {
-        display: true,
-        text: 'Intensity Bar Chart',
       },
+      // title: {
+      //   display: true,
+      //   text: "Intensity",
+      // },
     },
     scales: {
       y: {
@@ -65,9 +56,19 @@ const IntensityChart = () => {
         },
       },
     },
-  }; 
+  };
 
-  return <Bar data={charData} options={options} />;
+  return (
+    <div style={{ width: "500px" }}>
+      {data == {} || Object.keys(data).length === 0 ? (
+        <div className="flex justify-center">
+          <CircularProgress />
+        </div>
+      ) : (
+        <Bar data={charData} options={options} />
+      )}
+    </div>
+  );
 };
 
 export default IntensityChart;
