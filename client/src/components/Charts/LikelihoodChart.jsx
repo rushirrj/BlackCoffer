@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -28,11 +28,11 @@ const LikelihoodChart = () => {
         label: "Count Of Likelihood",
         data: Object.values(data),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 99, 132, 0.8)',
+          'rgba(54, 162, 235, 0.8)',
+          'rgba(255, 206, 86, 0.8)',
+          'rgba(75, 192, 192, 0.8)',
+          'rgba(153, 102, 255, 0.8)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -51,24 +51,10 @@ const LikelihoodChart = () => {
     plugins: {
       legend: {
         position: "top",
-        // display: false,
       },
-      // title: {
-      //   display: true,
-      //   text: "Intensity",
-      // },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          display: false,
-        },
-      },
-      x: {
-        grid: {
-          display: false,
-        },
+      title: {
+        display: true,
+        text: "Likelihood",
       },
     },
   };
@@ -80,7 +66,7 @@ const LikelihoodChart = () => {
           <CircularProgress />
         </div>
       ) : (
-        <Pie data={charData}/>
+        <Doughnut data={charData} options={options}/>
       )}
     </div>
   );
