@@ -8,6 +8,7 @@ import countryD from "../utils/country.json";
 import pestleD from "../utils/pestle.json";
 import sectorD from "../utils/sector.json";
 import topicD from "../utils/topic.json";
+import end_year from "../utils/end_year.json"
 
 const FilterData = ({ data, setData }) => {
   const [country, setCountry] = useState(" ");
@@ -15,7 +16,8 @@ const FilterData = ({ data, setData }) => {
   const [sector, setSector] = useState(" ");
   const [topic, setTopic] = useState(" ");
   const [ogData, setOGData] = useState(data);
-
+  const [endyear,setEndyear] = useState();
+   
   const getData = async () =>
     await fetch("http://localhost:4000/api/data/")
       .then((res) => res.json())
