@@ -10,7 +10,7 @@ function App() {
       <SideBar>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route path="/reports" element={<Reports itemsPerPage={10} />} />
           <Route path="*" element={<> not found</>} />
         </Routes>
       </SideBar>

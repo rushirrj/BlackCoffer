@@ -3,6 +3,25 @@ const router = express.Router();
 const Data = require("./model/Data");
 const jsonData = require("./jsondata.json");
 
+router.get("/feeds", async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+
+  try {
+    const data = await Data.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+    const count = await Data.countDocuments();
+    return res.json({
+      data,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 router.get("/data/", async (req, res) => {
   try {
     const data = await Data.find();
