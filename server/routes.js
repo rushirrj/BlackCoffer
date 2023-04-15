@@ -75,6 +75,51 @@ router.get("/dashboard/likelihood", async (req, res) => {
   });
   return res.status(200).json({ data: mapData, message: "Data fetched" });
 });
+router.get("/dashboard/relevance", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  mapData[0] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.relevance]) {
+      mapData[item.relevance] += 1;
+    } else if (item.relevance === null) {
+      mapData[0] += 1;
+    } else {
+      mapData[item.relevance] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
+router.get("/dashboard/start_year", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  // mapData["N.A"] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.start_year]) {
+      mapData[item.start_year] += 1;
+    } else if (item.start_year === null || item.start_year === "") {
+      // mapData["N.A"] += 1;
+    } else {
+      mapData[item.start_year] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
+router.get("/dashboard/end_year", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  // mapData["N.A"] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.end_year]) {
+      mapData[item.end_year] += 1;
+    } else if (item.end_year === null || item.end_year === "") {
+      // mapData["N.A"] += 1;
+    } else {
+      mapData[item.end_year] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
 
 // router.get("/generate", async (req, res) => {
 //   try {
