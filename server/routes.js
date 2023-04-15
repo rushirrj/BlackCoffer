@@ -13,7 +13,17 @@ router.get("/data/", async (req, res) => {
     console.log(err);
   }
 });
-router.get("/data/:type", async (req, res) => {
+
+router.get("/data/:id", async (req, res) => {
+  try {
+    const data = await Data.findById(req.params.id);
+    return res.status(200).json({ data, message: "Data fetched successfully" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/query/:type", async (req, res) => {
   try {
     // const data = await Data.find();
     const type = req.params.type;
@@ -21,7 +31,7 @@ router.get("/data/:type", async (req, res) => {
     Data.aggregate([
       {
         $group: {
-          _id: `$${type}`,
+          _id: `$${type}` ,
           count: { $sum: 1 },
         },
       },
@@ -35,13 +45,20 @@ router.get("/data/:type", async (req, res) => {
   }
 });
 
-router.get("/data/:id", async (req, res) => {
-  try {
-    const data = await Data.findById(req.params.id);
-    return res.status(200).json({ data, message: "Data fetched successfully" });
-  } catch (err) {
-    console.log(err);
-  }
+router.get("/dashboard/intensity", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  mapData[0] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.intensity]) {
+      mapData[item.intensity] += 1;
+    } else if (item.intensity === null) {
+      mapData[0] += 1;
+    } else {
+      mapData[item.intensity] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
 });
 
 // router.get("/generate", async (req, res) => {
