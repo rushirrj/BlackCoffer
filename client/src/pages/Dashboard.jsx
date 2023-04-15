@@ -1,28 +1,41 @@
 import React, { useState, useEffect } from "react";
+import IntensityChart from "../components/Charts/IntensityChart";
 
 const Dashboard = () => {
-  const [_udata, setData] = useState([]);
-  const [userData, setUserData] = useState({
-    labels: _udata.map((data) => data.topic),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: _udata.map((data) => data.sector),
-      },
-    ],
-  });
-  const getData = () => {
-    fetch("http://localhost:4000/api/data")
-      .then((response) => response.json())
-      .then((d) => setData(decodeURI))
-      .catch((err) => console.log(err));
-  };
+  // const [data, setData] = useState([]);
+  // const [labels, setLabel] = useState([]);
+  // useEffect(() => {
+  //   intensityFunc();
+  // }, []);
 
-  useEffect(() => {
-    getData();
-  });
+  // const intensityFunc = async () => {
+  //   fetch("http://localhost:4000/api/data")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // setData(data?.data);
+  //       let mapData = {};
+  //       mapData[0] = 0;
+  //       data?.data?.forEach((item) => {
+  //         if (mapData[item.intensity]) {
+  //           mapData[item.intensity] += 1;
+  //         } else if (item.intensity === null) {
+  //           mapData[0] += 1;
+  //         } else {
+  //           mapData[item.intensity] = 1;
+  //         }
+  //       });
 
-  return <div className="title"></div>;
+  //       setData(Object.values(mapData));
+  //       setLabel(Object.keys(mapData));
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <IntensityChart />
+    </div>
+  )
 };
-
 export default Dashboard;
