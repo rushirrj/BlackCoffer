@@ -31,7 +31,7 @@ router.get("/query/:type", async (req, res) => {
     Data.aggregate([
       {
         $group: {
-          _id: `$${type}` ,
+          _id: `$${type}`,
           count: { $sum: 1 },
         },
       },
@@ -116,6 +116,55 @@ router.get("/dashboard/end_year", async (req, res) => {
       // mapData["N.A"] += 1;
     } else {
       mapData[item.end_year] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
+router.get("/dashboard/topic", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  mapData["N.A"] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.topic]) {
+      mapData[item.topic] += 1;
+    } else if (item.topic === null || item.topic === "") {
+      mapData["N.A"] += 1;
+    } else {
+      mapData[item.topic] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
+router.get("/dashboard/country", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  // mapData["N.A"] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.country]) {
+      mapData[item.country] += 1;
+    } else if (item.country === null || item.country === "") {
+      // mapData["N.A"] += 1;
+    } else if (item.topic == "world") {
+      mapData["World"] += 1;
+    } else {
+      mapData[item.country] = 1;
+    }
+  });
+  return res.status(200).json({ data: mapData, message: "Data fetched" });
+});
+router.get("/dashboard/region", async (req, res) => {
+  const data = await Data.find();
+  let mapData = {};
+  // mapData["N.A"] = 0;
+  data?.forEach((item) => {
+    if (mapData[item.region]) {
+      mapData[item.region] += 1;
+    } else if (item.topic == "world") {
+      mapData["World"] += 1;
+    } else if (item.region === null || item.region === "") {
+      // mapData["N.A"] += 1;
+    } else {
+      mapData[item.region] = 1;
     }
   });
   return res.status(200).json({ data: mapData, message: "Data fetched" });
