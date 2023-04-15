@@ -10,10 +10,13 @@ const Reports = () => {
     getData();
   }, []);
   return (
-    <div className="grid grid-cols-3 gap-3">
-      {data.map((item) => (
-        <ReportCard content={item} />
-      ))}
+    <div>
+      <div className="text-center"><h1 className="font-bold text-2xl py-2">Reports</h1></div>
+      <div className="grid grid-cols-3 gap-3">
+        {data.map((item) => (
+          <ReportCard content={item} />
+        ))}
+      </div>
     </div>
   );
 };
