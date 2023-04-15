@@ -8,7 +8,7 @@
   display: flex;
 }
 main {
-  padding: 10px;
+  width: 100%;
 }
 
 .title {
