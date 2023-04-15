@@ -27,6 +27,9 @@ const Reports = ({ itemsPerPage }) => {
       <div className="text-center">
         <h1 className="font-bold text-2xl py-2">REPORTS</h1>
       </div>
+      <div className="text-left">
+        <h1 className="font-bold text-2xl py-2 pl-2">Search By </h1>
+      </div>
       <hr />
       <FilterData data={data} setData={setData} />
       <hr />
